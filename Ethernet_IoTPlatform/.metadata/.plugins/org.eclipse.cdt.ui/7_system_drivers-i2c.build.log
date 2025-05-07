@@ -1,0 +1,42 @@
+12:09:36 **** Build of configuration Debug for project 7_system_drivers-i2c ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/fpu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/fpu.d" -MT"Src/fpu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/fpu.o"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Src/timebase.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/timebase.d" -MT"Src/timebase.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/timebase.o"
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
+arm-none-eabi-gcc "../Src/i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I../Inc -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/7_system_drivers-i2c/chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/i2c.d" -MT"Src/i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/i2c.o"
+../Src/i2c.c: In function 'i2c1_byte_read':
+../Src/i2c.c:85:15: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
+   85 |  volatile int tmp;
+      |               ^~~
+../Src/i2c.c: In function 'i2c1_burst_read':
+../Src/i2c.c:143:15: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
+  143 |  volatile int tmp;
+      |               ^~~
+../Src/i2c.c: In function 'i2c1_write_byte':
+../Src/i2c.c:223:15: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
+  223 |  volatile int tmp;
+      |               ^~~
+../Src/i2c.c: In function 'i2c1_burst_write':
+../Src/i2c.c:262:15: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
+  262 |  volatile int tmp;
+      |               ^~~
+arm-none-eabi-gcc -o "7_system_drivers-i2c.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Gaming Laptop RTX\Documents\STM32BareMetal-Projects\7_system_drivers-i2c\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="7_system_drivers-i2c.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 7_system_drivers-i2c.elf
+ 
+arm-none-eabi-size   7_system_drivers-i2c.elf 
+arm-none-eabi-objdump -h -S  7_system_drivers-i2c.elf  > "7_system_drivers-i2c.list"
+arm-none-eabi-objcopy  -O binary  7_system_drivers-i2c.elf  "7_system_drivers-i2c.bin"
+   text	   data	    bss	    dec	    hex	filename
+   5732	    108	   1604	   7444	   1d14	7_system_drivers-i2c.elf
+Finished building: default.size.stdout
+ 
+Finished building: 7_system_drivers-i2c.list
+ 
+Finished building: 7_system_drivers-i2c.bin
+ 
+
+12:09:44 Build Finished. 0 errors, 4 warnings. (took 8s.39ms)
+

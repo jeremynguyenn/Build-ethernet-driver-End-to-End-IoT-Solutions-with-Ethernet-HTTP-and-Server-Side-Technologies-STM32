@@ -1,0 +1,28 @@
+18:00:41 **** Incremental Build of configuration Debug for project 8_system_drivers-spi-extended ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/8_system_drivers-spi-extended/chip_headers/CMSIS/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/8_system_drivers-spi-extended/chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/8_system_drivers-spi-extended/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/spi.d" -MT"Src/spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/spi.o"
+arm-none-eabi-gcc "../Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F411RETx -DSTM32F411xE -c -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/8_system_drivers-spi-extended/chip_headers/CMSIS/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/8_system_drivers-spi-extended/chip_headers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Gaming Laptop RTX/Documents/STM32BareMetal-Projects/8_system_drivers-spi-extended/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/uart.d" -MT"Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/uart.o"
+../Src/spi.c: In function 'spi_transmit_receive':
+../Src/spi.c:314:25: warning: variable 'tmp_state' set but not used [-Wunused-but-set-variable]
+  314 |    SPI_StateTypeDef     tmp_state;
+      |                         ^~~~~~~~~
+../Src/spi.c:313:25: warning: variable 'tmp_mode' set but not used [-Wunused-but-set-variable]
+  313 |    uint32_t             tmp_mode;
+      |                         ^~~~~~~~
+arm-none-eabi-gcc -o "8_system_drivers-spi-extended.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Gaming Laptop RTX\Documents\STM32BareMetal-Projects\8_system_drivers-spi-extended\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="8_system_drivers-spi-extended.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 8_system_drivers-spi-extended.elf
+ 
+arm-none-eabi-size   8_system_drivers-spi-extended.elf 
+arm-none-eabi-objdump -h -S  8_system_drivers-spi-extended.elf  > "8_system_drivers-spi-extended.list"
+arm-none-eabi-objcopy  -O binary  8_system_drivers-spi-extended.elf  "8_system_drivers-spi-extended.bin"
+   text	   data	    bss	    dec	    hex	filename
+   3020	     12	   1652	   4684	   124c	8_system_drivers-spi-extended.elf
+Finished building: default.size.stdout
+ 
+Finished building: 8_system_drivers-spi-extended.list
+ 
+Finished building: 8_system_drivers-spi-extended.bin
+ 
+
+18:00:44 Build Finished. 0 errors, 2 warnings. (took 2s.785ms)
+

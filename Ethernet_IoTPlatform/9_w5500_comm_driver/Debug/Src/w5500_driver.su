@@ -1,0 +1,12 @@
+../Src/w5500_driver.c:26:6:ip_assigned_callback	4	static
+../Src/w5500_driver.c:31:6:ip_update_callback	4	static
+../Src/w5500_driver.c:35:6:ip_conflict_callback	4	static
+../Src/w5500_driver.c:47:6:wizchip_cs_pin_init	4	static
+../Src/w5500_driver.c:58:6:wizchip_pin_cs_select	4	static
+../Src/w5500_driver.c:64:6:wizchip_pin_cs_deselect	4	static
+../Src/w5500_driver.c:70:6:wizchip_read_burst	16	static
+../Src/w5500_driver.c:78:9:wizchip_read_byte	16	static
+../Src/w5500_driver.c:85:6:wizchip_write_burst	16	static
+../Src/w5500_driver.c:92:6:wizchip_write_byte	16	static
+../Src/w5500_driver.c:96:7:w5500_spi_init	8	static
+../Src/w5500_driver.c:115:7:w5500_init	96	static

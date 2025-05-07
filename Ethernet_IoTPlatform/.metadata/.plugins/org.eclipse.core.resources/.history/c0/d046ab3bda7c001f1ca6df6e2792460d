@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include "stm32f4xx.h"
+#include "fpu.h"
+#include "uart.h"
+#include "timebase.h"
+#include "bsp.h"
+#include "adc.h"
+#include "w5500_driver.h"
+
+
+void check_cable_connection(void)
+{
+	uint8_t cable_status;
+
+	do{
+
+		printf("\r\nGetting cable status...\r\n");
+		ctlwizchip(CW_GET_PHYLINK,(void *)&cable_status);
+
+		if(cable_status ==  PHY_LINK_OFF)
+		{
+			printf("No cable detected ...\r\n");
+			delay(1000);
+		}
+
+	}while(cable_status ==  PHY_LINK_OFF);
+}
+
+
+int main()
+{
+	/*Enable FPU*/
+	fpu_enable();
+
+	/*Initialize timebase*/
+	timebase_init();
+
+	/*Initialize debug UART*/
+	debug_uart_init();
+
+
+
+	/*Initialize LED*/
+	led_init();
+
+	/*Initialize Push button*/
+	button_init();
+
+	/*Initialize ADC*/
+	pa1_adc_init();
+
+	/*Start conversion*/
+	start_conversion();
+
+    wizchip_cs_pin_init();
+    w5500_spi_init();
+    w5500_init();
+
+    check_cable_connection();
+
+	while(1)
+	{
+
+	}
+}
+

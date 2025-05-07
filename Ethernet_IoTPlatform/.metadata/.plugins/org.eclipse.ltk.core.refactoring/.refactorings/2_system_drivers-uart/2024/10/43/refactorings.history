@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;2_system_drivers-uart/Debug/2_system_drivers-uart.bin&apos; to &apos;test-uart.bin&apos;" description="Rename resource &apos;2_system_drivers-uart.bin&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Debug/2_system_drivers-uart.bin" name="test-uart.bin" stamp="1729424920087" updateReferences="true"/>
+</session>

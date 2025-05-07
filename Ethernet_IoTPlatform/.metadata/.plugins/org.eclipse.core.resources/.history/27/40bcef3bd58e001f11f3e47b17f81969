@@ -1,0 +1,167 @@
+#include <stdio.h>
+#include "stm32f4xx.h"
+#include "fpu.h"
+#include "uart.h"
+#include "timebase.h"
+#include "bsp.h"
+#include "adc.h"
+#include "w5500_driver.h"
+
+#define SOCK_DNS	4
+
+
+int8_t process_dns(void);
+
+ typedef enum
+ {
+	 OFF = 0,
+	 ON = 1
+ }dns_state_type;
+
+
+uint8_t flag_process_dns_success =  OFF;
+
+
+uint8_t dns_server[4] = {8,8,8,8};
+uint8_t domain_ip[4] = {};
+
+uint8_t domain_name[]= "facebook.com";
+
+uint8_t data_buff[DATA_BUF_SIZE];
+
+wiz_PhyConf current_phy_conf;
+
+void check_cable_connection(void)
+{
+	uint8_t cable_status;
+
+	do{
+
+		printf("\r\nGetting cable status...\r\n");
+		ctlwizchip(CW_GET_PHYLINK,(void *)&cable_status);
+
+		if(cable_status ==  PHY_LINK_OFF)
+		{
+			printf("No cable detected ...\r\n");
+			delay(1000);
+		}
+
+	}while(cable_status ==  PHY_LINK_OFF);
+
+	printf("Cable connected...\r\n");
+
+}
+
+void display_phy_config(void)
+{
+	wiz_PhyConf phy_conf;
+	ctlwizchip(CW_GET_PHYCONF,(void*)&phy_conf);
+
+	if(phy_conf.by == PHY_CONFBY_HW)
+	{
+		printf("\n\rPHY is currently configured by hardware.");
+	}
+	else{
+		printf("\n\rPHY is currently configured by software.");
+
+	}
+	printf("\r\nSTATUS: Autonegotiation %s",(phy_conf.mode == PHY_MODE_AUTONEGO) ? "Enabled" : "Disabled");
+	printf("\r\nSTATUS: Duplex Mode: %s",(phy_conf.duplex == PHY_DUPLEX_FULL) ? "Full Duplex" : "Half Duplex");
+	printf("\r\nSTATUS: Speed: %dMbps",(phy_conf.speed == PHY_SPEED_10) ? 10 : 100);
+  printf("\r\n...");
+
+}
+
+int main()
+{
+	/*Enable FPU*/
+	fpu_enable();
+
+	/*Initialize timebase*/
+	timebase_init();
+
+	/*Initialize debug UART*/
+	debug_uart_init();
+
+
+
+	/*Initialize LED*/
+	led_init();
+
+	/*Initialize Push button*/
+	button_init();
+
+	/*Initialize ADC*/
+	pa1_adc_init();
+
+	/*Start conversion*/
+	start_conversion();
+
+    wizchip_cs_pin_init();
+    w5500_spi_init();
+    w5500_init();
+
+    check_cable_connection();
+    display_phy_config();
+
+    current_phy_conf.by =  PHY_CONFBY_SW;
+    current_phy_conf.duplex =  PHY_DUPLEX_FULL;
+    current_phy_conf.mode   =  PHY_MODE_AUTONEGO;
+    current_phy_conf.speed =  PHY_SPEED_10;
+
+    ctlwizchip(CW_SET_PHYCONF,(void*)&current_phy_conf);
+
+
+    display_phy_config();
+
+
+    /*Run DNS*/
+    if(process_dns())
+    {
+    	flag_process_dns_success =  ON;
+    }
+
+    if(flag_process_dns_success)
+    {
+	    printf(" # DNS: %s => %d.%d.%d.%d\r\n", domain_name, domain_ip[0], domain_ip[1], domain_ip[2], domain_ip[3]);
+
+    }
+    else
+    {
+    	printf("DNS Failed\r\n");
+    }
+	while(1)
+	{
+
+	}
+}
+
+int8_t process_dns(void)
+{
+	int8_t ret = 0;
+	uint8_t dns_retry = 0;
+
+	DNS_init(SOCK_DNS, data_buf);
+
+	while(1)
+	{
+		if((  ret = DNS_run(dns_server, (uint8_t *)domain_name,domain_ip)) == 1)
+		{
+			break;
+		}
+		else
+		{
+			dns_retry++;
+			if(dns_retry <= 2)
+			{
+				printf("DNS timeout occurred retry [%d]\n\r",dns_retry);
+			}
+			if(dns_retry > 2)
+			{
+				 break;
+			}
+		}
+	}
+
+	return ret;
+}
